@@ -22,10 +22,11 @@ app.use(express.json());
 
 // app.use(bodyParser.urlencoded({ extended: true }));
 app.post("/create-customer", async (req, res, next) => {
+  const { email, fullName } = req.body;
   try {
     const customer = await stripe.customers.create({
-      name: "Minh Nguyen",
-      email: "minhnguyen@example.com",
+      name: fullName,
+      email: email,
       balance: 30000000000,
     });
 
